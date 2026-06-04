@@ -1,11 +1,101 @@
  <!DOCTYPE html>
- <html lang="en">
- <head>
+<html lang="id">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
- </head>
- <body>
-    
- </body>
- </html>
+    <title>Selamat Datang!</title>
+    <style>
+        /* Mengatur dasar halaman dengan font modern dan menghilangkan margin standar */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Latar belakang gradasi ungu yang colorful dan vibrant */
+            background: linear-gradient(135deg, #4f46e5, #7c3aed, #c084fc, #f472b6);
+            background-size: 300% 300%;
+            animation: gradientMove 10s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Animasi halus untuk pergerakan background gradasi */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Wadah utama (Card) teks ucapan selamat datang */
+        .welcome-card {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px); /* Efek kaca transparan (Glassmorphism) */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 500px;
+            width: 90%;
+            transform: translateY(0);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Animasi melayang halus untuk card */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Pengaturan gaya teks Judul Utama */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Pengaturan gaya teks Sub-judul */
+        p {
+            font-size: 1.1rem;
+            color: #f3e8ff;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* Tombol interaktif yang serasi */
+        .btn-explore {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #ffffff;
+            color: #7c3aed; /* Warna teks ungu gelap */
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Efek saat tombol diarahkan oleh mouse (Hover) */
+        .btn-explore:hover {
+            background-color: #f3e8ff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="welcome-card">
+        <h1>Halo, Selamat Datang!</h1>
+        <p>Terima kasih telah berkunjung. Ini adalah ruang digital saya yang penuh dengan warna dan kreativitas. Mari menjelajah lebih jauh!</p>
+        <a href="#" class="btn-explore">Mulai Jelajahi</a>
+    </div>
+
+</body>
+</html>
