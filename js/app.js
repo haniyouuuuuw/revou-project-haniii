@@ -41,7 +41,7 @@ let state = {
 // ==========================================================================
 //   APPLICATION INITIALIZATION
 // ==========================================================================
-document.addEventListener('DOMContentLoaded', () => {
+function initAll() {
     initTheme();
     initGreeting();
     initClock();
@@ -60,7 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'translateY(0)';
         }, 50);
     });
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+} else {
+    initAll();
+}
 
 // ==========================================================================
 //   TOAST NOTIFICATION MODULE
