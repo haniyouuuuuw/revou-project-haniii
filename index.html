@@ -1,101 +1,210 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang!</title>
-    <style>
-        /* Mengatur dasar halaman dengan font modern dan menghilangkan margin standar */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Latar belakang gradasi ungu yang colorful dan vibrant */
-            background: linear-gradient(135deg, #4f46e5, #7c3aed, #c084fc, #f472b6);
-            background-size: 300% 300%;
-            animation: gradientMove 10s ease infinite;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-            overflow: hidden;
-        }
-
-        /* Animasi halus untuk pergerakan background gradasi */
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Wadah utama (Card) teks ucapan selamat datang */
-        .welcome-card {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px); /* Efek kaca transparan (Glassmorphism) */
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 500px;
-            width: 90%;
-            transform: translateY(0);
-            animation: float 4s ease-in-out infinite;
-        }
-
-        /* Animasi melayang halus untuk card */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Pengaturan gaya teks Judul Utama */
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Pengaturan gaya teks Sub-judul */
-        p {
-            font-size: 1.1rem;
-            color: #f3e8ff;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        /* Tombol interaktif yang serasi */
-        .btn-explore {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #ffffff;
-            color: #7c3aed; /* Warna teks ungu gelap */
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Efek saat tombol diarahkan oleh mouse (Hover) */
-        .btn-explore:hover {
-            background-color: #f3e8ff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-    </style>
+    <meta name="description" content="Dashboard Kehidupan Interaktif - Kelola tugas, waktu fokus, dan tautan favorit Anda dalam satu halaman yang indah.">
+    <meta name="theme-color" content="#6366f1">
+    <title>Life Dashboard | Produktivitas & Fokus</title>
+    
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="dark-theme">
+    <!-- Background Elements for Premium Blur Effect -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
 
-    <div class="welcome-card">
-        <h1>Halo, Selamat Datang!</h1>
-        <p>Terima kasih telah berkunjung. Ini adalah ruang digital saya yang penuh dengan warna dan kreativitas. Mari menjelajah lebih jauh!</p>
-        <a href="#" class="btn-explore">Mulai Jelajahi</a>
+    <div class="app-container">
+        <!-- HEADER SECTION: Greeting, Time, Theme Toggle -->
+        <header class="glass-card header-card">
+            <div class="header-left">
+                <div class="clock-wrapper">
+                    <h1 id="clock" aria-live="polite">10:45:22</h1>
+                    <p id="date">Selasa, 27 Januari 2026</p>
+                </div>
+            </div>
+            
+            <div class="header-center">
+                <div class="greeting-wrapper">
+                    <span id="greeting-text">Selamat Pagi</span>, 
+                    <span id="username" class="editable-name" contenteditable="true" spellcheck="false" title="Klik untuk mengubah nama">Ahmad</span>
+                    <span class="edit-indicator" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <button id="theme-toggle" class="icon-btn" aria-label="Ubah Tema" title="Ubah Tema (Terang/Gelap)">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+                    </svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN DASHBOARD CONTENT -->
+        <main class="dashboard-grid">
+            
+            <!-- FOCUS TIMER CARD -->
+            <section class="glass-card timer-card" id="focus-timer-section">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon text-purple"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <h2>Fokus Timer</h2>
+                    </div>
+                    <button id="timer-settings-btn" class="icon-btn-small" aria-label="Pengaturan Timer" title="Pengaturan Durasi">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </button>
+                </div>
+
+                <div class="timer-display-wrapper">
+                    <!-- Progress Ring SVG for visual aesthetic -->
+                    <svg class="progress-ring" width="220" height="220">
+                        <circle class="progress-ring-bg" stroke="rgba(255, 255, 255, 0.05)" stroke-width="8" fill="transparent" r="96" cx="110" cy="110"/>
+                        <circle class="progress-ring-fill" stroke="var(--primary-color)" stroke-width="8" fill="transparent" r="96" cx="110" cy="110"/>
+                    </svg>
+                    <div class="timer-time" id="timer-display">25:00</div>
+                    <div class="timer-label" id="timer-state-label">Siap Fokus?</div>
+                </div>
+
+                <!-- Inline settings drawer -->
+                <div class="timer-settings-drawer" id="timer-settings">
+                    <label for="timer-minutes">Durasi (Menit):</label>
+                    <div class="settings-input-group">
+                        <input type="number" id="timer-minutes" min="1" max="180" value="25" aria-label="Durasi Timer Menit">
+                        <button id="save-timer-settings" class="btn btn-secondary">Simpan</button>
+                    </div>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-time="15">15m</button>
+                        <button class="preset-btn active" data-time="25">25m</button>
+                        <button class="preset-btn" data-time="45">45m</button>
+                        <button class="preset-btn" data-time="60">60m</button>
+                    </div>
+                </div>
+
+                <div class="timer-controls">
+                    <button id="timer-start-btn" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        <span>Mulai</span>
+                    </button>
+                    <button id="timer-stop-btn" class="btn btn-secondary" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></svg>
+                        <span>Jeda</span>
+                    </button>
+                    <button id="timer-reset-btn" class="btn btn-tertiary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                        <span>Reset</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- TO-DO LIST CARD -->
+            <section class="glass-card todo-card" id="todo-section">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon text-purple"><path d="m9 11-4 4 4 4"/><path d="m5 15h11a4 4 0 0 0 0-8h-1"/></svg>
+                        <h2>Daftar Tugas</h2>
+                        <span id="task-counter" class="badge">0 tersisa</span>
+                    </div>
+                    
+                    <!-- Sorting & Filter Controls -->
+                    <div class="todo-filters">
+                        <select id="todo-sort" aria-label="Urutkan Tugas" class="select-dropdown">
+                            <option value="custom">Urutan Kustom</option>
+                            <option value="alphabetical">Nama (A-Z)</option>
+                            <option value="dateCreated" selected>Terbaru dibuat</option>
+                            <option value="status">Status (Belum selesai dahulu)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Task Form -->
+                <form id="todo-form" class="todo-form">
+                    <div class="input-wrapper">
+                        <input type="text" id="todo-input" placeholder="Tambah tugas baru..." required maxlength="80" autocomplete="off" aria-label="Input Tugas Baru">
+                        <button type="submit" class="btn btn-primary add-task-btn" title="Tambah Tugas">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Task Container -->
+                <div class="todo-list-container">
+                    <ul id="todo-list" class="todo-list">
+                        <div class="empty-state">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-purple-light"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                            <p>Tidak ada tugas hari ini. Bagus sekali!</p>
+                        </div>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- QUICK LINKS CARD -->
+            <section class="glass-card links-card" id="links-section">
+                <div class="card-header">
+                    <div class="card-title-group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon text-purple"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        <h2>Tautan Cepat</h2>
+                    </div>
+                    <button id="add-link-toggle" class="btn btn-circle" aria-label="Tambah Tautan Baru" title="Tambah Tautan Baru">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="plus-icon"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                </div>
+
+                <!-- Add Link Drawer -->
+                <div class="link-form-drawer" id="link-form-container">
+                    <form id="link-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="link-name">Nama Situs</label>
+                                <input type="text" id="link-name" placeholder="Google" required maxlength="15" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="link-url">URL</label>
+                                <input type="text" id="link-url" placeholder="https://google.com" required autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" id="cancel-link-btn" class="btn btn-secondary btn-small">Batal</button>
+                            <button type="submit" class="btn btn-primary btn-small">Tambah Tautan</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Links Grid -->
+                <div class="links-container">
+                    <div id="links-grid" class="links-grid"></div>
+                </div>
+            </section>
+
+        </main>
+        
+        <!-- FOOTER -->
+        <footer class="app-footer">
+            <p>Life Dashboard &bull; CodingCamp &bull; Dibuat dengan 💜</p>
+        </footer>
     </div>
 
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="toast-container" aria-live="assertive"></div>
+
+    <!-- Alarm audio beep fallback -->
+    <audio id="alarm-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==\n" type="audio/wav">
+    </audio>
+
+    <!-- JavaScript File -->
+    <script src="js/app.js"></script>
 </body>
 </html>
